@@ -1,14 +1,10 @@
+import dayjs from 'dayjs'
 import Calender from './components/calendar'
 
 function App() {
   return (
     <>
-      <Calender
-        value={new Date('2023-2-21')}
-        onChange={(date: Date) => {
-          console.log(date, 'date')
-        }}
-      />
+      <Calender value={dayjs('2023-2-21')} />
     </>
   )
 }
