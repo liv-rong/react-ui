@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { TransformOffset } from '../components/Transform'
+import { Color } from '../color'
 
 type EventType = MouseEvent | React.MouseEvent<Element, MouseEvent>
 
@@ -7,16 +8,26 @@ type EventHandle = (e: EventType) => void
 
 interface useColorDragProps {
   offset?: TransformOffset
+  color: Color
   containerRef: React.RefObject<HTMLDivElement>
   targetRef: React.RefObject<HTMLDivElement>
   direction?: 'x' | 'y'
   onDragChange?: (offset: TransformOffset) => void
+  calculate?: () => TransformOffset
 }
 
 function useColorDrag(
   props: useColorDragProps
 ): [TransformOffset, EventHandle] {
-  const { offset, targetRef, containerRef, direction, onDragChange } = props
+  const {
+    offset,
+    color,
+    calculate,
+    targetRef,
+    containerRef,
+    direction,
+    onDragChange
+  } = props
 
   //一个是保存 offset 的
   const [offsetValue, setOffsetValue] = useState(offset || { x: 0, y: 0 })
@@ -25,6 +36,15 @@ function useColorDrag(
   const dragRef = useRef({
     flag: false
   })
+
+  useEffect(() => {
+    if (dragRef.current.flag === false) {
+      const calcOffset = calculate?.()
+      if (calcOffset) {
+        setOffsetValue(calcOffset)
+      }
+    }
+  }, [color])
 
   //先把之前的事件监听器去掉
   useEffect(() => {

@@ -1,10 +1,11 @@
-import dayjs from 'dayjs'
-import Calender from './components/calendar'
+// import dayjs from 'dayjs'
+// import Calender from './components/calendar'
+import ColorPickerPanel from './components/ColorPickerPanel'
 
 function App() {
   return (
     <>
-      <Calender
+      {/* <Calender
         value={dayjs('2023-11-08')}
         className={'aaa'}
         style={{ background: 'yellow' }}
@@ -21,7 +22,9 @@ function App() {
         onChange={(date) => {
           alert(date.format('YYYY-MM-DD'))
         }}
-      ></Calender>
+      ></Calender> */}
+
+      <ColorPickerPanel value="red" />
     </>
   )
 }

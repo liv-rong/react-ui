@@ -27,3 +27,22 @@ export const calculateColor = (props: {
     a: hsv.a
   })
 }
+
+export const calculateOffset = (
+  containerRef: React.RefObject<HTMLDivElement>,
+  targetRef: React.RefObject<HTMLDivElement>,
+  color: Color
+): TransformOffset => {
+  const { width, height } = containerRef.current!.getBoundingClientRect()
+  const { width: targetWidth, height: targetHeight } =
+    targetRef.current!.getBoundingClientRect()
+
+  const centerOffsetX = targetWidth / 2
+  const centerOffsetY = targetHeight / 2
+  const hsv = color.toHsv()
+
+  return {
+    x: hsv.s * width - centerOffsetX,
+    y: (1 - hsv.v) * height - centerOffsetY
+  }
+}

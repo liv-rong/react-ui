@@ -2,7 +2,7 @@ import { useRef, type FC } from 'react'
 import { Color } from './color'
 import { Handler, Transform } from './components'
 import { useColorDrag } from './hooks'
-import { calculateColor } from './utils'
+import { calculateColor, calculateOffset } from './utils'
 
 const Palette: FC<{
   color: Color
@@ -14,6 +14,7 @@ const Palette: FC<{
   const [offset, dragStartHandle] = useColorDrag({
     containerRef,
     targetRef: transformRef,
+    color,
     onDragChange: (offsetValue) => {
       const newColor = calculateColor({
         offset: offsetValue,
@@ -22,7 +23,9 @@ const Palette: FC<{
         color
       })
       onChange?.(newColor)
-      console.log(offsetValue)
+    },
+    calculate: () => {
+      return calculateOffset(containerRef, transformRef, color)
     }
   })
 
