@@ -25,7 +25,15 @@ function App() {
       ></Calender> */}
 
       <ColorPickerPanel value="red" />
-      <Space></Space>
+
+      <Space
+        direction="horizontal"
+        align="end"
+      >
+        <div>111</div>
+        <div>222</div>
+        <div>333</div>
+      </Space>
     </>
   )
 }
