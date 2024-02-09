@@ -1,7 +1,7 @@
 // import dayjs from 'dayjs'
 // import Calender from './components/calendar'
 import ColorPickerPanel from './components/ColorPickerPanel'
-
+import Space from './components/Space'
 function App() {
   return (
     <>
@@ -25,6 +25,7 @@ function App() {
       ></Calender> */}
 
       <ColorPickerPanel value="red" />
+      <Space></Space>
     </>
   )
 }

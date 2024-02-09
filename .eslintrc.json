@@ -16,6 +16,8 @@
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
     // suppress errors for missing 'import React' in files
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    // 使用any
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
