@@ -2,6 +2,7 @@
 // import Calender from './components/calendar'
 import ColorPickerPanel from './components/ColorPickerPanel'
 import Space from './components/Space'
+import ReactSpring from './components/react-spring'
 function App() {
   return (
     <>
@@ -37,6 +38,7 @@ function App() {
         <div className="h-16 w-16 bg-pink-200"></div>
         <div className="h-16 w-16 bg-pink-200"></div>
       </Space>
+      <ReactSpring />
     </>
   )
 }

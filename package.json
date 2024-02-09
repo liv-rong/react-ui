@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.0.3",
+    "@react-spring/web": "^9.7.3",
     "@types/node": "^20.11.15",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
