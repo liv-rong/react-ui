@@ -27,12 +27,15 @@ function App() {
       <ColorPickerPanel value="red" />
 
       <Space
+        className="container"
         direction="horizontal"
         align="end"
+        wrap={true}
+        size={['large', 'small']}
       >
-        <div>111</div>
-        <div>222</div>
-        <div>333</div>
+        <div className="h-16 w-16 bg-pink-200"></div>
+        <div className="h-16 w-16 bg-pink-200"></div>
+        <div className="h-16 w-16 bg-pink-200"></div>
       </Space>
     </>
   )

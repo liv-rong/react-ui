@@ -1,13 +1,16 @@
 import React from 'react'
-import { SpaceProps } from './types'
+import { SizeType, SpaceProps } from './types'
 import classNames from 'classnames'
 import './style/index.scss'
+import { ConfigContext } from './provider'
 const Space: React.FC<SpaceProps> = (props) => {
+  const { space } = React.useContext(ConfigContext)
+
   const {
     className,
     style,
     children,
-    size = 'small',
+    size = space?.size || 'small',
     direction = 'horizontal',
     align,
     split,
@@ -15,7 +18,18 @@ const Space: React.FC<SpaceProps> = (props) => {
     ...otherProps
   } = props
 
+  const spaceSize = {
+    small: 8,
+    middle: 16,
+    large: 24
+  }
+
+  function getNumberSize(size: SizeType) {
+    return typeof size === 'string' ? spaceSize[size] : size || 0
+  }
+
   const childNodes = React.Children.toArray(children)
+
   const mergedAlign =
     direction === 'horizontal' && align === undefined ? 'center' : align
   const cn = classNames(
@@ -31,19 +45,49 @@ const Space: React.FC<SpaceProps> = (props) => {
     const key = (child && child.key) || `space-item-${i}`
 
     return (
-      <div
-        className="space-item"
-        key={key}
-      >
-        {child}
-      </div>
+      <>
+        <div
+          className="space-item"
+          key={key}
+        >
+          {child}
+        </div>
+        {i < childNodes.length && split && (
+          <span
+            className={`${className}-split`}
+            style={style}
+          >
+            {split}
+          </span>
+        )}
+      </>
     )
   })
+
+  const otherStyles: React.CSSProperties = {}
+
+  const [horizontalSize, verticalSize] = React.useMemo(
+    () =>
+      ((Array.isArray(size) ? size : [size, size]) as [SizeType, SizeType]).map(
+        (item) => getNumberSize(item)
+      ),
+    [size]
+  )
+
+  otherStyles.columnGap = horizontalSize
+  otherStyles.rowGap = verticalSize
+
+  if (wrap) {
+    otherStyles.flexWrap = 'wrap'
+  }
 
   return (
     <div
       className={cn}
-      style={style}
+      style={{
+        ...otherStyles,
+        ...style
+      }}
       {...otherProps}
     >
       {nodes}
