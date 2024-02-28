@@ -1,1 +1,3 @@
-export type BaseIconProps = {}
+export type BaseIconProps = {
+  name: string
+}
