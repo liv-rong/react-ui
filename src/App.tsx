@@ -1,6 +1,6 @@
 // import dayjs from 'dayjs'
 // import Calender from './components/calendar'
-import React, { FC, useState } from 'react'
+import React, { CSSProperties, FC, useState } from 'react'
 import ColorPickerPanel from './components/ColorPickerPanel'
 import Space from './components/Space'
 import ReactSpring from './components/react-spring'
@@ -23,6 +23,7 @@ const pages: Array<PageItem> = [
     </animated.div>
   )
 ]
+import { useBearStore } from './store/store'
 
 function App() {
   const [index, set] = useState(0)
@@ -34,9 +35,14 @@ function App() {
     enter: { transform: 'translate3d(0%,0,0)' },
     leave: { transform: 'translate3d(-100%,0,0)' }
   })
+  const bearStore = useBearStore()
 
   return (
     <>
+      <button onClick={() => bearStore.increase()}>+1</button>
+      {bearStore.bears}
+      <button onClick={() => bearStore.decrease()}>-1</button>
+      <button onClick={() => bearStore.restart()}>重置</button>
       {/* <Calender
         value={dayjs('2023-11-08')}
         className={'aaa'}
