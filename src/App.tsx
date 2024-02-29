@@ -39,10 +39,14 @@ function App() {
 
   return (
     <>
-      <button onClick={() => bearStore.increase()}>+1</button>
-      {bearStore.bears}
-      <button onClick={() => bearStore.decrease()}>-1</button>
-      <button onClick={() => bearStore.restart()}>重置</button>
+      <div className="space-x-2">
+        <button>{bearStore.bears}</button>
+        <br></br>
+        <button onClick={() => bearStore.increase()}>+1</button>
+
+        <button onClick={() => bearStore.decrease()}>-1</button>
+        <button onClick={() => bearStore.restart()}>重置</button>
+      </div>
       {/* <Calender
         value={dayjs('2023-11-08')}
         className={'aaa'}
