@@ -3,11 +3,11 @@ import { create } from './my-store'
 interface State {
   bears: number
 }
-interface Action {
-  increase: () => void
-  decrease: () => void
-  restart: () => void
-}
+// interface Action {
+//   increase: () => void
+//   decrease: () => void
+//   restart: () => void
+// }
 
 export const useBearStore = create((set: any) => ({
   bears: 0,
