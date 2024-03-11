@@ -47,66 +47,7 @@ function App() {
   })
   // const bearStore = useBearStore()
 
-  return (
-    <>
-      <div className="space-x-2">
-        <IconAdd
-          size="40px"
-          spin
-          style={{ color: 'blue', fontSize: '50px' }}
-        />
-        {/* <button>{bearStore.bears}</button>
-        <br></br>
-        <button onClick={() => bearStore.increase()}>+1</button>
-
-        <button onClick={() => bearStore.decrease()}>-1</button>
-        <button onClick={() => bearStore.restart()}>重置</button>
-        */}
-      </div>
-      {/* <Calender
-        value={dayjs('2023-11-08')}
-        className={'aaa'}
-        style={{ background: 'yellow' }}
-        locale="en-US"
-        dateRender={(value) => {
-          return (
-            <div>
-              <p style={{ background: 'yellowgreen', height: '50px' }}>
-                {value.format('YYYY/MM/DD')}
-              </p>
-            </div>
-          )
-        }}
-        onChange={(date) => {
-          alert(date.format('YYYY-MM-DD'))
-        }}
-      ></Calender> */}
-
-      <ColorPickerPanel value="red" />
-
-      <Space
-        className="container"
-        direction="horizontal"
-        align="end"
-        wrap={true}
-        size={['large', 'small']}
-      >
-        <div className="h-16 w-16 bg-pink-200"></div>
-        <div className="h-16 w-16 bg-pink-200"></div>
-        <div className="h-16 w-16 bg-pink-200"></div>
-      </Space>
-      <ReactSpring />
-      <div
-        className="container"
-        onClick={onClick}
-      >
-        {transitions((style, i) => {
-          const Page = pages[i]
-          return <Page style={style} />
-        })}
-      </div>
-    </>
-  )
+  return <></>
 }
 
 export default App
