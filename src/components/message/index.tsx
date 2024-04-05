@@ -13,7 +13,7 @@ export interface MessageProps {
   position?: Position
 }
 
-export const MessageProvider: FC<{}> = (props) => {
+export const MessageProvider: FC<object> = (props) => {
   const { messageList, add, update, remove, clearAll } = useStore('top')
 
   return (
