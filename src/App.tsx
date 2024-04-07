@@ -1,39 +1,82 @@
-import React from 'react'
-import { UploadOutlined } from '@ant-design/icons'
-// import type { UploadProps } from 'antd'
-import { Button, message } from 'antd'
+import React, { useState } from 'react'
+import { Link, useLocation, RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
 
-import Upload, { UploadProps } from './components/Upload'
-// const props: UploadProps = {
-//   name: 'file',
-//   action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
-//   headers: {},
-//   onChange(info) {
-//     if (info.file.status !== 'uploading') {
-//       console.log(info.file, info.fileList)
-//     }
-//     if (info.file.status === 'done') {
-//       message.success(`${info.file.name} file uploaded successfully`)
-//     } else if (info.file.status === 'error') {
-//       message.error(`${info.file.name} file upload failed.`)
-//     }
-//   }
-// }
+const Layout = () => {
+  const { pathname } = useLocation()
 
-const props: UploadProps = {
-  name: 'file',
-  action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188'
+  return (
+    <div>
+      <div>当前路由: {pathname}</div>
+      <Outlet />
+    </div>
+  )
 }
+
+const Aaa = () => {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>{count}</p>
+      <p>
+        <button onClick={() => setCount((count) => count + 1)}>加一</button>
+      </p>
+      <Link to="/bbb">去 Bbb 页面</Link>
+      <br />
+      <Link to="/ccc">去 Ccc 页面</Link>
+    </div>
+  )
+}
+
+const Bbb = () => {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>{count}</p>
+      <p>
+        <button onClick={() => setCount((count) => count + 1)}>加一</button>
+      </p>
+      <Link to="/">去首页</Link>
+    </div>
+  )
+}
+
+const Ccc = () => {
+  return (
+    <div>
+      <p>ccc</p>
+      <Link to="/">去首面</Link>
+    </div>
+  )
+}
+
+const routes = [
+  {
+    path: '/',
+    element: <Layout></Layout>,
+    children: [
+      {
+        path: '/',
+        element: <Aaa></Aaa>
+      },
+      {
+        path: '/bbb',
+        element: <Bbb></Bbb>
+      },
+      {
+        path: '/ccc',
+        element: <Ccc></Ccc>
+      }
+    ]
+  }
+]
+
+export const router = createBrowserRouter(routes)
 
 const App: React.FC = () => (
   <>
-    <Upload {...props}>
-      <Button icon={<UploadOutlined />}>Click to Upload ant</Button>
-    </Upload>
-
-    <Upload {...props}>
-      <Button icon={<UploadOutlined />}>Click to Upload my</Button>
-    </Upload>
+    <RouterProvider router={router} />
   </>
 )
 
