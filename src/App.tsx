@@ -1,5 +1,12 @@
-import React, { useState } from 'react'
-import { Link, useLocation, RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
+import {
+  Link,
+  useLocation,
+  createBrowserRouter,
+  Outlet
+} from 'react-router-dom'
+
+import { TodoList } from './components/TodoList'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -74,10 +81,13 @@ const routes = [
 
 export const router = createBrowserRouter(routes)
 
-const App: React.FC = () => (
-  <>
-    <RouterProvider router={router} />
-  </>
-)
+const App: React.FC = () => {
+  return (
+    <>
+      <h5>TodoList</h5>
+      <TodoList />
+    </>
+  )
+}
 
 export default App

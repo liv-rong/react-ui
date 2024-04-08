@@ -7,13 +7,19 @@ export const getMaskStyle = (element: HTMLElement, container: HTMLElement) => {
 
   const elementTopWithScroll = container.scrollTop + top
   const elementLeftWithScroll = container.scrollLeft + left
-
+  console.log(elementTopWithScroll, elementLeftWithScroll)
   return {
     width: container.scrollWidth,
     height: container.scrollHeight,
     borderTopWidth: Math.max(elementTopWithScroll, 0),
     borderLeftWidth: Math.max(elementLeftWithScroll, 0),
-    borderBottomWidth: Math.max(container.scrollHeight - height - elementTopWithScroll, 0),
-    borderRightWidth: Math.max(container.scrollWidth - width - elementLeftWithScroll, 0)
+    borderBottomWidth: Math.max(
+      container.scrollHeight - height - elementTopWithScroll,
+      0
+    ),
+    borderRightWidth: Math.max(
+      container.scrollWidth - width - elementLeftWithScroll,
+      0
+    )
   }
 }

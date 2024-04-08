@@ -3,12 +3,17 @@ import { getMaskStyle } from './getMaskStyle'
 
 interface MaskProps {
   element: HTMLElement
+
   container?: HTMLElement
+
   renderMaskContent?: (wrapper: React.ReactNode) => React.ReactNode
 }
 
 export const Mask: React.FC<MaskProps> = (props) => {
-  const { element, container, renderMaskContent } = props
+  const { element, renderMaskContent, container } = props
+
+  console.log(element, 'element')
+
   const [style, setStyle] = useState<CSSProperties>({})
 
   useEffect(() => {
@@ -16,7 +21,6 @@ export const Mask: React.FC<MaskProps> = (props) => {
       return
     }
 
-    //设置 block、inline 为 center 是把元素中心滚动到可视区域中心的意思：
     element.scrollIntoView({
       block: 'center',
       inline: 'center'
