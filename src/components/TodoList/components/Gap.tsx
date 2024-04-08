@@ -15,16 +15,22 @@ export const Gap: FC<TodoListProps> = ({ id }: Props) => {
 
   const [{ isOver }, drop] = useDrop(() => {
     return {
-      accept: 'new-item',
-      drop() {
-        todoListStore.addItem(
-          {
-            id: Math.random().toString().slice(2, 8),
-            status: 'todo',
-            content: '待办事项'
-          },
-          id
-        )
+      accept: ['new-item', 'list-item'],
+      drop(item) {
+        if (item.type === 'new-item') {
+          // const length = todoListStore.list.length - 1
+          // const order = 0 > length ? 0 : todoListStore.list[length].order
+          todoListStore.addItem(
+            {
+              id: Math.random().toString().slice(2, 8),
+              status: 'todo',
+              content: '待办事项'
+            },
+            id
+          )
+        } else {
+          // todoListStore.update({})
+        }
       },
       collect(monitor) {
         return {
@@ -33,6 +39,28 @@ export const Gap: FC<TodoListProps> = ({ id }: Props) => {
       }
     }
   })
+
+  // const [{ isOver }, drop] = useDrop(() => {
+  //   return {
+  //     accept: 'List-item',
+  //     drop() {
+  //       console.log('11111111')
+  //       todoListStore.addItem(
+  //         {
+  //           id: Math.random().toString().slice(2, 8),
+  //           status: 'todo',
+  //           content: '待办事项'
+  //         },
+  //         id
+  //       )
+  //     },
+  //     collect(monitor) {
+  //       return {
+  //         isOver: monitor.isOver()
+  //       }
+  //     }
+  //   }
+  // })
 
   useEffect(() => {
     drop(ref)

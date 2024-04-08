@@ -25,7 +25,9 @@ export const NewItem: FC<TodoListProps> = (props: Props) => {
 
   const [{ dragging }, drag] = useDrag({
     type: 'new-item',
-    item: {},
+    item: {
+      type: 'new-item'
+    },
     collect(monitor) {
       return {
         dragging: monitor.isDragging()
