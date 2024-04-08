@@ -29,7 +29,14 @@ export const Gap: FC<TodoListProps> = ({ id }: Props) => {
             id
           )
         } else {
-          // todoListStore.update({})
+          todoListStore.updateItem(
+            {
+              id: item?.id,
+              status: item?.status,
+              content: item?.content
+            },
+            id
+          )
         }
       },
       collect(monitor) {

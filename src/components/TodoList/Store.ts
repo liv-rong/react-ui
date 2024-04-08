@@ -32,6 +32,7 @@ const stateCreator: StateCreator<State & Action> = (set) => ({
       const index = newList.findIndex((item) => item.id === id)
 
       newList.splice(index, 0, item)
+
       return {
         list: newList
       }
@@ -46,8 +47,28 @@ const stateCreator: StateCreator<State & Action> = (set) => ({
       }
     })
   },
-  updateItem: (updateItem: ListItemType) => {
+  updateItem: (updateItem: ListItemType, id?: string) => {
     set((state) => {
+      if (id) {
+        const newList = [...state.list]
+
+        //要插入的地方
+        const insertIndex = newList.findIndex((item) => item.id === id)
+
+        //删除的地方
+        const deleteIndex = newList.findIndex(
+          (item) => item.id === updateItem.id
+        )
+
+        //先删除
+        newList.splice(deleteIndex, 1)
+
+        //后插入
+        newList.splice(insertIndex, 0, updateItem)
+
+        return { list: newList }
+      }
+
       return {
         list: state.list.map((item) => {
           if (item.id === updateItem.id) {

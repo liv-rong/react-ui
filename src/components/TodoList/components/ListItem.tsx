@@ -20,7 +20,7 @@ export const ListItem: FC<TodoListProps> = ({ data }: Props) => {
   const [{ dragging }, drag] = useDrag({
     type: 'list-item',
     item: {
-      id: data?.id,
+      ...data,
       type: 'list-item'
     },
     collect(monitor) {
