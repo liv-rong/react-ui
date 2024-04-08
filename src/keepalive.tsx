@@ -38,8 +38,8 @@ const isKeepPath = (keepPaths: Array<string | RegExp>, path: string) => {
 }
 
 export function useKeepOutlet() {
-  const location = useLocation()
-  const element = useOutlet()
+  const location = useLocation() //拿到当前路由
+  const element = useOutlet() //
 
   const { keepElements, keepPaths } = useContext(KeepAliveContext)
   const isKeep = isKeepPath(keepPaths, location.pathname)
