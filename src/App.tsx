@@ -1,12 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import {
-  Link,
-  useLocation,
-  createBrowserRouter,
-  Outlet
-} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation, createBrowserRouter, Outlet } from 'react-router-dom'
 
 import { TodoList } from './components/TodoList'
+import Portal from './components/Portal'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -25,6 +21,7 @@ const Aaa = () => {
   return (
     <div>
       <p>{count}</p>
+
       <p>
         <button onClick={() => setCount((count) => count + 1)}>加一</button>
       </p>
@@ -82,9 +79,16 @@ const routes = [
 export const router = createBrowserRouter(routes)
 
 const App: React.FC = () => {
+  const content = (
+    <div className="btn">
+      <button>按钮1111</button>
+    </div>
+  )
   return (
     <>
       <h5>TodoList</h5>
+
+      <Portal attach={document.body}>{content}</Portal>
       <TodoList />
     </>
   )
