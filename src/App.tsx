@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, createBrowserRouter, Outlet } from 'react-router-dom'
 
-import { TodoList } from './components/TodoList'
-import Portal from './components/Portal'
+// import { TodoList } from './components/TodoList'
+// import Portal from './components/Portal'
+// import MutateObserver from './components/MutationObserver'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -79,17 +80,25 @@ const routes = [
 export const router = createBrowserRouter(routes)
 
 const App: React.FC = () => {
-  const content = (
-    <div className="btn">
-      <button>按钮1111</button>
-    </div>
-  )
+  // const content = (
+  //   <div className="btn">
+  //     <button>按钮1111</button>
+  //   </div>
+  // )
+
+  // const [className, setClassName] = useState('aaa')
+
+  // useEffect(() => {
+  //   setTimeout(() => setClassName('bbb'), 2000)
+  // }, [])
+
+  // const callback = function (mutationsList: MutationRecord[]) {
+  //   console.log(mutationsList)
+  // }
+
   return (
     <>
       <h5>TodoList</h5>
-
-      <Portal attach={document.body}>{content}</Portal>
-      <TodoList />
     </>
   )
 }
