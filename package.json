@@ -18,6 +18,7 @@
     "@react-spring/web": "^9.7.3",
     "@types/node": "^20.11.15",
     "antd": "^5.16.0",
+    "async-validator": "^4.2.5",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "copy-to-clipboard": "^3.3.3",
