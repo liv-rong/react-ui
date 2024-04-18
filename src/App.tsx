@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation, createBrowserRouter, Outlet } from 'react-router-dom'
 
 // import { TodoList } from './components/TodoList'
 // import Portal from './components/Portal'
 // import MutateObserver from './components/MutationObserver'
+
+import CopyToClipboard from './components/Copy'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -98,6 +100,14 @@ const App: React.FC = () => {
 
   return (
     <>
+      <CopyToClipboard
+        text={'宋文伟'}
+        onCopy={() => {
+          console.log('done')
+        }}
+      >
+        <div onClick={() => alert('111')}> 复制</div>
+      </CopyToClipboard>
       <h5>TodoList</h5>
     </>
   )
