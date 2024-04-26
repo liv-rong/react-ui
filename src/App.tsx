@@ -5,6 +5,8 @@ import { Link, useLocation, createBrowserRouter, Outlet } from 'react-router-dom
 // import Portal from './components/Portal'
 // import MutateObserver from './components/MutationObserver'
 
+import Watermark from './components/Watermark'
+
 import CopyToClipboard from './components/Copy'
 
 const Layout = () => {
@@ -109,6 +111,46 @@ const App: React.FC = () => {
         <div onClick={() => alert('111')}> 复制</div>
       </CopyToClipboard>
       <h5>TodoList</h5>
+
+      <Watermark content={['测试水印', '神说要有光']}>
+        <div style={{ height: 800 }}>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quod deserunt quidem quas
+            in rem ipsam ut nesciunt asperiores dignissimos recusandae minus, eaque, harum
+            exercitationem esse sapiente? Eveniet, id provident!
+          </p>
+        </div>
+      </Watermark>
     </>
   )
 }
